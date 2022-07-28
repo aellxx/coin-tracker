@@ -1,0 +1,17 @@
+.container {
+    width: 100%;
+    display: grid;
+    justify-items: center;
+}
+
+.input {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    border: 0;
+    height: 2rem;
+    font-size: 100%;
+}
+
+h2 {
+    text-align: center;
+}
