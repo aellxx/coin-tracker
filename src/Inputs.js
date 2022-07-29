@@ -1,10 +1,11 @@
+import Conversion from "./Conversion"
 import {useState} from "react";
 import styles from "./Inputs.module.css"
 
 function Inputs({coins}) {
     const [valueUSD, setValueUSD] = useState(0);
     const [valueNew, setValueNew] = useState(0);
-    const [currency, setCurrency] = useState("");
+    const [currency, setCurrency] = useState("BTC");
 
     const onChange = (event) => {
         setValueUSD(event.target.value);
@@ -20,20 +21,26 @@ function Inputs({coins}) {
       }
 
       return (
-        <div styles={styles.container}>
+        <div className={styles.container}>
+            <label for="usd-value">Enter a value in USD</label>
             <input
-                className={styles.input}
+                className={styles.inputField}
                 onChange={onChange}
                 value={valueUSD}
                 type="number"
                 min="0"
+                max="1000000000"
                 placeholder="Enter a value in USD"
+                name="usd-value"
             />
+            <br />
+            <label for="currency">Enter a value in USD</label>
             <select 
-              className={styles.input}
+              className={styles.inputField}
               required 
-              onChange={changeCurrency}>
-              <option value="" disabled selected>Select your option</option>
+              onChange={changeCurrency}
+              name="currency">
+              <option defaultValue="" disabled>Select your option</option>
               {
                 coins.map((coin) => 
                 <option key={coin.id} id={coin.id}>
@@ -41,7 +48,7 @@ function Inputs({coins}) {
                 </option>)
               }
             </select>
-            {currency===""? null : <h2 style={styles.result}>${valueUSD===0 ? 0 : valueUSD} USD = {valueNew} {currency}</h2>}
+            <Conversion valueUSD={valueUSD} valueNew={valueNew} currency={currency}/>  
       </div>
       );
 }

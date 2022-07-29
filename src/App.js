@@ -17,9 +17,11 @@ function App() {
   }, [])
 
   return (
-    <div className={styles.box}>
-      <h1>The Coins!</h1>
-      {loading ? <strong>Loading...</strong> : <Inputs coins={coins}/>}
+    <div className={styles.bg}>
+      <div className={styles.box}>
+        <Title />
+        {loading ? <strong>Loading...</strong> : <Inputs coins={coins}/>}
+      </div>
     </div>
   );
 }
